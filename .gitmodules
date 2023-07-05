@@ -1,0 +1,3 @@
+[submodule "py_ws/src/Interface"]
+	path = py_ws/src/Interface
+	url = git@github.com:SafeRoboticsLab/PrincetonRaceCar_Interface.git
