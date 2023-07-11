@@ -15,7 +15,7 @@
     </include>
 
     <!-- This section start a node -->
-    <node pkg="intro_minitruck" type="donut.py" name="donut" output="$(arg output)">
+    <node pkg="intro_minitruck" type="pure_pursuit_node.py" name="pursuit" output="$(arg output)">
         <param name="odom_topic"           value="$(arg odom_topic)" />
         <param name="control_topic"        value="$(arg control_topic)" />
         <param name="simulation"           value="false" />
