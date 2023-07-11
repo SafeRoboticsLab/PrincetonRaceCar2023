@@ -1,0 +1,11 @@
+*build*
+*devel*
+*.catkin_workspace
+*.ipynb_checkpoints
+*__pycache__
+*.pyc
+*vscode
+*DS_Store
+ROS_Core/py_ws/src/CMakeLists.txt
+ROS_Core/cpp_ws/src/CMakeLists.txt
+Jetson_Setup/2_install_packages/Mambaforge-Linux-aarch64.sh
