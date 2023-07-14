@@ -1,6 +1,3 @@
-[submodule "ROS_Core/py_ws/src/Interface"]
-	path = ROS_Core/py_ws/src/Interface
-	url = git@github.com:SafeRoboticsLab/PrincetonRaceCar_Interface.git
 [submodule "ROS_Core/py_ws/src/Modules/AprilTagSLAM_ROS"]
 	path = ROS_Core/py_ws/src/Modules/AprilTagSLAM_ROS
 	url = git@github.com:SafeRoboticsLab/AprilTagSLAM_ROS.git
@@ -10,3 +7,6 @@
 [submodule "ROS_Core/py_ws/src/Modules/Routing"]
 	path = ROS_Core/py_ws/src/Modules/Routing
 	url = git@github.com:SafeRoboticsLab/PrincetonRaceCar_routing.git
+[submodule "ROS_Core/py_ws/src/Modules/Interface"]
+	path = ROS_Core/py_ws/src/Modules/Interface
+	url = git@github.com:SafeRoboticsLab/PrincetonRaceCar_Interface.git
