@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy
-from controller import Donut
+from part2 import Donut
 
 
 def main():

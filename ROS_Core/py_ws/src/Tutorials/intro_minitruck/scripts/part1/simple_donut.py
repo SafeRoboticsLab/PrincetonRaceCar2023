@@ -2,9 +2,9 @@
 
 import threading
 import rospy
-from .scripts.utils import get_ros_param
+from .utils import get_ros_param
 
-from racecar_msgs.msg import ServoMsg 
+from .Modules.racecar_msgs import ServoMsg 
 
 class Simple_Donut():
 

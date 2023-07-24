@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy
-from controller import Pure_Pursuit
+from part3 import Pure_Pursuit
 
 
 def main():

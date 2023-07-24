@@ -2,9 +2,9 @@
 
 import threading
 import rospy
-from .utils import get_ros_param, RealtimeBuffer, GeneratePwm, State2D
+from utils import get_ros_param, RealtimeBuffer, GeneratePwm, State2D
 
-from racecar_msgs.msg import ServoMsg 
+from Modules.ROS_msgs.msg import ServoMsg 
 from nav_msgs.msg import Odometry
 
 class Donut():

@@ -14,12 +14,6 @@ cd $CUR_DIR/ROS_Core/py_ws/src/Modules/Interface
 git checkout main
 git pull
 
-# # Planning
-# cd $CUR_DIR/ROS_Core/src/Utility/Labs/Lab1
-# git checkout main
-# git pull
-
-
 # Message
 cd $CUR_DIR/ROS_Core/py_ws/src/Modules/ROS_msgs
 git checkout main
