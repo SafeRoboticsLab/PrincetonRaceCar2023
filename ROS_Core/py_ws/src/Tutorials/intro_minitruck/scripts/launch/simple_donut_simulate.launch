@@ -9,10 +9,16 @@
     <arg name="init_yaw"        default="0"                     doc="initial z position"/>
     <arg name="enable_routing"  default="false"                 doc="launch routing map server"/>
 
-    <!-- This line loads ROS parameters from a yaml file -->
-    <rosparam command="load" file="$(find intro_minitruck)/configs/config.yaml" />
-
-    
+    <!-- This section launch another launch file -->
+    <include file="$(find racecar_interface)/launch/simulation.launch" >
+        <arg name="odom_topic"              value="$(arg odom_topic)" />
+        <arg name="control_topic"           value="$(arg control_topic)" />
+        <arg name="pub_rate"                value="$(arg pub_rate)" />
+        <arg name="init_x"                  value="$(arg init_x)" />
+        <arg name="init_y"                  value="$(arg init_y)" />
+        <arg name="init_yaw"                value="$(arg init_yaw)" />
+        <arg name="enable_routing"          value="$(arg enable_routing)" />
+    </include>
 
     <!-- This section start a node -->
     <node pkg="intro_minitruck" type="simple_donut_node.py" name="simple_donut" output="$(arg output)">

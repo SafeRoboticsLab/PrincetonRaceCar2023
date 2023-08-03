@@ -5,7 +5,7 @@ import rospy
 import numpy as np
 from utils import RealtimeBuffer, get_ros_param, State2D, GeneratePwm
 
-from Modules.ROS_msgs.msg import ServoMsg 
+from racecar_msgs.msg import ServoMsg 
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import PoseStamped
 

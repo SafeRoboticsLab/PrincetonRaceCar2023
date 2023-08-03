@@ -2,9 +2,9 @@
 
 import threading
 import rospy
-from .utils import get_ros_param
+from utils import get_ros_param
 
-from .Modules.racecar_msgs import ServoMsg 
+from racecar_msgs.msg import ServoMsg 
 
 class Simple_Donut():
 
@@ -62,11 +62,14 @@ class Simple_Donut():
         '''
         message = ServoMsg(throttle = accel, steer = steer)
         self.control_pub.publish(message)
-      
-   
+    
+
     def planning_thread(self):
-         
-         while not rospy.is_shutdown():
+        '''
+        Main thread for the planning
+        '''
+
+        while not rospy.is_shutdown():
 
             steer = self.max_steer
             accel = self.throttle_gain * 0.5

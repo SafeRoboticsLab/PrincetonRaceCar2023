@@ -4,7 +4,7 @@ import threading
 import rospy
 from utils import get_ros_param, RealtimeBuffer, GeneratePwm, State2D
 
-from Modules.ROS_msgs.msg import ServoMsg 
+from racecar_msgs.msg import ServoMsg 
 from nav_msgs.msg import Odometry
 
 class Donut():
@@ -78,7 +78,7 @@ class Donut():
         self.control_pub # TO BE COMPLETED
         ########################### END OF TODO 1#################################
         
-            
+        
     def setup_subscriber(self):
         '''
         This function sets up the subscriber for the odometry message
@@ -136,7 +136,7 @@ class Donut():
         '''
         rospy.loginfo("Planning thread started waiting for ROS service calls...")
         while not rospy.is_shutdown():
-               
+            
             # read the current state from the buffer
             state_cur = self.state_buffer.readFromRT()
             

@@ -1,3 +1,1 @@
-from .simple_donut import Simple_Donut
-
-
+from simple_donut import Simple_Donut
