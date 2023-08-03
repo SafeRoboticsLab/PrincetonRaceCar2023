@@ -166,6 +166,7 @@ include_directories(
 install(PROGRAMS
   scripts/simple_donut_node.py
   scripts/donut_node.py
+  scripts/letter.py
   scripts/pursuit_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
