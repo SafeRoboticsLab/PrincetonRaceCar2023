@@ -7,10 +7,17 @@ from utils import RealtimeBuffer, get_ros_param, State2D, GeneratePwm
 
 from racecar_msgs.msg import ServoMsg 
 from nav_msgs.msg import Odometry
+
 class LetterDrawingBot:
+   """
+   Main class for the controller"""
    def __init__(self):
-      
+      """
+      Constructor for the LetterDrawingBot class
+      """
       self.rate = rospy.Rate(10)  # 10 Hz
+
+      # Initialize the real-time buffer for the state
       self.state_buffer = RealtimeBuffer()
 
       # Initialize the PWM converter
@@ -23,6 +30,9 @@ class LetterDrawingBot:
       self.setup_publisher()
       self.setup_subscriber()
 
+      # start planning thread
+      # We use a thread to run the planning loop so that we can continuously read the odometry
+      # and goal message in the callback function without being blocked by the planning loop
       threading.Thread(target=self.planning_thread).start()
 
    def read_parameters(self):
@@ -61,10 +71,9 @@ class LetterDrawingBot:
       self.control_pub = rospy.Publisher(self.control_topic, ServoMsg, queue_size=1)
 
    def setup_subscriber(self):
+      # This function sets up the subscriber for the odometry
       self.pose_sub = rospy.Subscriber(self.odom_topic, Odometry, self.odometry_callback, queue_size=1)
 
-        ########################### END OF TODO 2#################################
-        
    def odometry_callback(self, odom_msg: Odometry):
       """
       Subscriber callback function for the robot odometry message
@@ -102,6 +111,10 @@ class LetterDrawingBot:
       self.control_pub.publish(servo_msg)
 
    def stop_robot(self, state):
+      """
+      Parameters:
+         state: State2D, current state of the robot
+      """
       # TODO 1: Stop the robot's motion by publishing a zero command
       # Between various movements, we want the robot to come to a complete stop
       # Use the current velocity and a reference velocity to accomplish this goal
@@ -112,6 +125,13 @@ class LetterDrawingBot:
       self.publish_control(accel, 0, state)
 
    def draw_curve(self, time_to_draw, state, clockwise):
+      """
+      Function that drives robot along a curved path.
+      Parameters:
+         time_to_draw: float, how long will robot drive path [s]
+         state: State2D, current state of the robot
+         clockwise: Boolean, direction robot will steer (counterclockwise if false)
+      """
       steer = self.max_steer if not clockwise else -self.max_steer
       start_time = rospy.Time.now()
 
@@ -121,7 +141,14 @@ class LetterDrawingBot:
          self.rate.sleep()
 
 
-   def draw_circle(self, full, state, clockwise):      
+   def draw_circle(self, full, state, clockwise):
+      '''
+      Function that drives robot in circular path
+      Parameters:
+         full: Boolean, draws complete circle if True (semicircle if False)
+         state: State2D, current state of the robot
+         clockwise: Boolean, direction robot will steer (counterclockwise if false)
+         '''      
       vel_cur = state.v_long
       radius = self.wheel_base/math.tan(self.max_steer)
       # TODO 3: Based on the radius and our current velocity, how long should we curve to draw either
@@ -136,6 +163,12 @@ class LetterDrawingBot:
 
 
    def draw_straight_line(self, time_to_draw, state):
+      """
+      Function that draws line
+      Parameters:
+         time_to_draw: float, how long will robot drive path [s]
+         state: State2D, current state of the robot
+      """
       start_time = rospy.Time.now()
       # TODO 4: Use your code from todo 2 in order to draw a straight line
       while rospy.Time.now() - start_time < rospy.Duration(time_to_draw):
@@ -143,6 +176,11 @@ class LetterDrawingBot:
          self.rate.sleep()
 
    def get_started(self, state):
+      """
+      Function that begins robot's motion
+      Parameters:
+         state: State2D, current state of the robot
+      """
       start_time = rospy.Time.now()
       # TODO 5: Use your code from todo 2 to complete the while loop below.
       while rospy.Time.now() - start_time < rospy.Duration(2):
@@ -153,7 +191,9 @@ class LetterDrawingBot:
 
 
    def planning_thread(self):
-      i = 0
+      '''
+      Main thread for the planning
+      '''
       while not rospy.is_shutdown():
          if self.state_buffer.new_data_available:
             self.get_started(state = self.state_buffer.readFromRT())

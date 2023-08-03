@@ -7,9 +7,12 @@ from utils import get_ros_param
 from racecar_msgs.msg import ServoMsg 
 
 class Simple_Donut():
-
+    '''
+    Main class for the controller
+    '''
     def __init__(self):
         '''
+        Constructor for the Simple Donut class
         '''
         # Read Parameters from the parameter server
         self.read_parameters()

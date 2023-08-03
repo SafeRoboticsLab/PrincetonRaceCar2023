@@ -8,7 +8,7 @@ def main():
     rospy.init_node('donut_node')
     rospy.loginfo("Start Donut Node")
     
-    # Initialize the PurePursuitController class
+    # Initialize the Donut class
     Donut()
     # Keep the node running
     rospy.spin()

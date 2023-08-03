@@ -8,13 +8,12 @@ from racecar_msgs.msg import ServoMsg
 from nav_msgs.msg import Odometry
 
 class Donut():
-
     '''
     Main class for the controller
     '''
     def __init__(self):
         '''
-        Constructor for the PurePursuitController class
+        Constructor for the Donut class
         '''
         # Initialize the real-time buffer for the state
         self.state_buffer = RealtimeBuffer()
