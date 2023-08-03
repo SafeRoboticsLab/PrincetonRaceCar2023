@@ -1,1 +1,1 @@
-from pure_pursuit import Pure_Pursuit
+from .pure_pursuit import Pure_Pursuit

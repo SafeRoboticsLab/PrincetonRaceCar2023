@@ -1,1 +1,1 @@
-from letter_node import LetterDrawingBot
+from .letter_node import LetterDrawingBot

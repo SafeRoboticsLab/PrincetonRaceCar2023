@@ -1,1 +1,1 @@
-from part2.donut_node import Donut
+from .donut_node import Donut
